@@ -1,0 +1,10 @@
+Описание товару:<p>
+<strong><%= @product.name %></strong><p>
+
+<strong>Цена: <%= @product.price %></strong><p>
+
+<strong>Описание: <%= @product.description %></strong><p>
+  
+  <% @product.images.each do |image| %>
+       <%= image_tag(image) %>
+  <% end %>

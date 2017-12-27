@@ -1,0 +1,20 @@
+<h1>Продукция:</h1>
+
+<table>
+  <tr>
+    <th width="70"></th>
+    <th width="50"></th>
+    <th width="50"></th>
+    <th width="100"></th>
+  </tr>
+
+  <% @products.each do |product| %>
+      <tr>
+        <td width="70"><%= image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png')) %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.description %></td>
+        <td><%= link_to 'Посмотреть', product_path(product) %></td>
+      </tr>
+  <% end %>
+</table>

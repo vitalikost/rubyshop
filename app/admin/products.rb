@@ -44,12 +44,8 @@ ActiveAdmin.register Product do
    column :price
    column :description
    column :images do |product|
-     div  do
-       product.images.each do |image|
-         div  do
-           image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png'))
-         end
-       end
+     div do
+       image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png'))
      end
    end
    actions
