@@ -12,9 +12,9 @@
       <tr>
         <td width="70"><%= image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png')) %></td>
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
+        <td>Цена: <%= product.price %></td>
         <td><%= link_to 'Посмотреть', product_path(product) %></td>
+        <td><%= link_to 'Купить', product_path(product) %></td>
       </tr>
   <% end %>
 </table>
