@@ -21,6 +21,9 @@ class CartController < ApplicationController
     if @line_item
       @line_item.destroy
     end
+    if @cart.line_items.all.length ==0
+      @cart.destroy
+    end
     redirect_to root_path
   end
 
@@ -36,6 +39,9 @@ class CartController < ApplicationController
     end
     if @line_item.quantity == 0
       @line_item.destroy
+    end
+    if @cart.line_items.all.length ==0
+      @cart.destroy
     end
     redirect_to root_path
   end

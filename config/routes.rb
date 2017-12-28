@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'cart/add'
   get 'cart/remove'
   get 'cart/remove_one'
+
+  get 'order/show'
+  post 'order/create'
   resources :product
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

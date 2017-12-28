@@ -1,0 +1,33 @@
+<h1>Работает</h1>
+
+<%= form_with scope: :order,url:order_create_path, local: true do |form| %>
+
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@order.errors.count, "error") %> Не коректно заполнена форма:
+          </h2>
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :phone %><br>
+      <%= form.text_area :phone %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+    <%= link_to 'Назад', root_path %>
+<% end %>
