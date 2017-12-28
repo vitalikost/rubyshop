@@ -14,7 +14,7 @@
         <td><%= product.name %></td>
         <td>Цена: <%= product.price %></td>
         <td><%= link_to 'Посмотреть', product_path(product) %></td>
-        <td><%= link_to 'Купить', cart_add_path(id: product.id), remote: true %></td>
+        <td><%= link_to 'Купить', cart_add_path(id: product.id) %></td>
       </tr>
   <% end %>
 
@@ -22,6 +22,9 @@
 
 <% if init_cart %>
     <hr>
+
+    <% if init_cart.line_items.length > 0 %>
+
     <%= init_cart.id %>
     <table>
       <tr>
@@ -29,16 +32,32 @@
         <th width="50">Кво</th>
         <th width="50">Цена</th>
         <th width="100">Сумма</th>
+        <th></th>
       </tr>
-
+      <% @all_summ = 0 %>
       <% init_cart.line_items.each do |product| %>
           <tr>
             <% @product = Product.find(product.product_id) %>
             <td><%= @product.name %></td>
             <td><%= product.quantity %></td>
             <td><%= @product.price %></td>
+            <td><%= @product.price*product.quantity %></td>
+            <td><%= link_to 'Добавити',cart_add_path(id: @product.id) %> <%= link_to 'Зменшити',cart_remove_one_path(id: @product.id) %> <%= link_to 'Удалить',cart_remove_path(id: @product.id) %></td>
+            <% @all_summ += @product.price*product.quantity %>
           </tr>
       <% end %>
 
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Итого:</strong></td>
+        <td><strong><%= @all_summ  %></strong></td>
+      </tr>
+
+
+
     </table>
+
+    <% end %>
+    
 <% end %>
