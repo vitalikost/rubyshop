@@ -42,6 +42,7 @@ class CartController < ApplicationController
     end
     if @cart.line_items.all.length ==0
       @cart.destroy
+      session[:cart_id] = nul
     end
     redirect_to root_path
   end

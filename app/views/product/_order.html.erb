@@ -7,7 +7,6 @@
         <th width="50">Кво</th>
         <th width="50">Цена</th>
         <th width="100">Сумма</th>
-        <th></th>
       </tr>
       <% @all_summ = 0 %>
       <% init_cart.line_items.each do |product| %>
@@ -32,5 +31,5 @@
 
 
     </table>
-
+    <%= link_to 'Оформить заказ',order_show_path(id: init_cart) %>
 <% end %>
