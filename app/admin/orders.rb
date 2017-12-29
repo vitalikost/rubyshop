@@ -17,9 +17,6 @@ ActiveAdmin.register Order do
     attributes_table do
       row :name
       row :phone
-
-
-      @all_summ = 0
       row :item do
         table do
           tr do
@@ -32,13 +29,11 @@ ActiveAdmin.register Order do
             th do
               "Quantity"
             end
-
             th do
               "Summa"
             end
-
           end
-
+          @all_summ = 0
           order.item_orders.each do |product|
             @product = Product.find(product.product_id)
             tr do
@@ -48,7 +43,6 @@ ActiveAdmin.register Order do
               td do
                 @product.price
               end
-
               td do
                 product.quantity
               end
@@ -61,7 +55,7 @@ ActiveAdmin.register Order do
         end
       end
 
-      row :summa       do
+      row :summa do
         @all_summ
       end
 
