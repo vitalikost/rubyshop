@@ -12,6 +12,8 @@ class OrderController < ApplicationController
         @line.save
       end
       @cart.destroy
+      UserMailer.email_user(@order).deliver_later
+      UserMailer.email_admin(@order).deliver_later
     end
     redirect_to root_path
   end

@@ -1,7 +1,6 @@
 class UserMailer < ApplicationMailer
   def email_user(order)
     @order = order
-
     mail(to: @order.email, subject: 'Заказ номер №'+@order.id.to_s)
   end
 
