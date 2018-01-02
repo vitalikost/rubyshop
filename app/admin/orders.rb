@@ -17,6 +17,9 @@ ActiveAdmin.register Order do
     attributes_table do
       row :name
       row :phone
+      row :email
+      row :comment
+
       row :item do
         table do
           tr do
@@ -55,8 +58,11 @@ ActiveAdmin.register Order do
         end
       end
 
-      row :summa do
-        @all_summ
+      row :summa_order do
+        b do
+          @all_summ
+        end
+
       end
 
     end
