@@ -23,7 +23,18 @@
 
     <p>
       <%= form.label :phone %><br>
-      <%= form.text_area :phone %>
+      <%= form.text_field :phone %>
+    </p>
+
+    <p>
+      <%= form.label :email %><br>
+      <%= form.email_field :email %>
+    </p>
+
+
+    <p>
+      <%= form.label :comment %><br>
+      <%= form.text_area :comment %>
     </p>
 
     <table>
