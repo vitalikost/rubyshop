@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Добрый день, <%= @order.name %></h1>
+<p>
+  Вы сделали заказ <%= @order.id %> от <%= @order.updated_at %>
+</p>
+<p>
+ Содержание: %>.
+</p>
+
+<ul>
+<% @all_summ = 0 %>
+<% @order.item_orders.each do |item| %>
+    <% @product = Product.find(item.product_id) %>
+    <li><b><%= @product.name %></b> -
+      <%= @product.price %> x<%= item.quantity %> -
+      <%= @product.price*item.quantitye %>
+      <% @all_summ += @product.price*product.quantity %>
+    </li>
+<% end %>
+</ul>
+
+<p>Сумма заказа: <b> <%= @all_summ %> </b> </p>
+
+<p>Спасибо что  посетили наш магазин </p>
+</body>
+</html>
