@@ -2,13 +2,14 @@ ActiveAdmin.register Product do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :name, :description, :price, images: []
+ permit_params :name, :description, :price, :category_id, images: []
 
  form html: { multipart: true } do |f|
    f.semantic_errors
 
    f.inputs do
      f.input :name
+     f.input :category
      f.input :description
      f.input :price
      f.input :images, as: :file, input_html: { multiple: true }
@@ -21,6 +22,7 @@ ActiveAdmin.register Product do
  show do
    attributes_table do
      row :name
+     row :category
      row :description
      row :price
      row :images do
@@ -41,6 +43,7 @@ ActiveAdmin.register Product do
    selectable_column
    id_column
    column :name
+   column :category
    column :price
    column :description
    column :images do |product|
