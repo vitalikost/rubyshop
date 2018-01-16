@@ -25,6 +25,15 @@ ActiveAdmin.register Product do
      row :category
      row :description
      row :price
+
+     product.attribute_values.each do |attr_value|
+       row attr_value.attr.name  do
+        div do
+         attr_value.val
+        end
+       end
+     end
+
      row :images do
        div do
          product.images.each do |image|
