@@ -41,7 +41,8 @@ ActiveAdmin.register Order do
             @product = Product.find(product.product_id)
             tr do
               td do
-                @product.name
+                #@product.name
+                link_to @product.name, admin_product_path(@product)
               end
               td do
                 @product.price
