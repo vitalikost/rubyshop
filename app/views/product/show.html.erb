@@ -1,10 +1,14 @@
-Описание товару:<p>
-<strong><%= @product.name %></strong><p>
+<strong>Название:</strong><%= @product.name %>
+<p><p>
+<strong>Цена: </strong><%= @product.price %>
+<p>
+<strong>Описание:</strong><%= @product.description %>
+<p>
+  <% @product.attribute_values.each do |attr_value|%>
+      <strong><%= attr_value.attr.name %> :</strong> <%= attr_value.val %><p>
+  <% end %>
 
-<strong>Цена: <%= @product.price %></strong><p>
-
-<strong>Описание: <%= @product.description %></strong><p>
-
+<p>
   <% @product.images.each do |image| %>
        <%= image_tag(image) %>
   <% end %>
