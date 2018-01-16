@@ -28,9 +28,9 @@ ActiveAdmin.register Product do
 
      product.attribute_values.each do |attr_value|
        row attr_value.attr.name  do
-        div do
+
          attr_value.val
-        end
+
        end
      end
 
@@ -55,6 +55,16 @@ ActiveAdmin.register Product do
    column :category
    column :price
    column :description
+   column :properties do |product|
+     div do
+       product.attribute_values.each do |attr_value|
+         div do
+          attr_value.attr.name + ":" + attr_value.val
+         end
+       end
+     end
+   end
+
    column :images do |product|
      div do
        image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png'))
