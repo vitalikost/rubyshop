@@ -1,4 +1,4 @@
-ActiveAdmin.register Attrproduct do
+ActiveAdmin.register Attr do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
