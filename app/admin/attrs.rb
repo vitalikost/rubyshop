@@ -2,7 +2,7 @@ ActiveAdmin.register Attr do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :name
+permit_params :name, attribute_values_attributes: {}
 #
 # or
 #
@@ -18,10 +18,11 @@ permit_params :name
       f.input :name
     end
     f.inputs do
-      f.has_many :attribute_values, new_record:true do |a|
+      f.has_many :attribute_values, allow_destroy: true, new_record: 'New value' do |a|
         a.input :val
       end
     end
+
    actions
   end
 
