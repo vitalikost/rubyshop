@@ -2,7 +2,7 @@ ActiveAdmin.register Product do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :name, :description, :price, :category_id, images: []
+ permit_params :name, :description, :price, :category_id, images: [], attribute_value_ids: []
 
  form html: { multipart: true } do |f|
    f.semantic_errors
@@ -13,6 +13,14 @@ ActiveAdmin.register Product do
      f.input :description
      f.input :price
      f.input :images, as: :file, input_html: { multiple: true }
+
+     Attr.all.each do |property|
+
+       f.label property.name
+       f.input :attribute_values, :as => :check_boxes, collection: property.attribute_values
+       end
+
+
    end
 
    actions
@@ -29,7 +37,7 @@ ActiveAdmin.register Product do
      product.attribute_values.each do |attr_value|
        row attr_value.attr.name  do
 
-         attr_value.val
+         attr_value.name
 
        end
      end
@@ -43,6 +51,7 @@ ActiveAdmin.register Product do
          end
        end
      end
+
    end
    # active_admin_comments
  end
@@ -59,7 +68,7 @@ ActiveAdmin.register Product do
      div do
        product.attribute_values.each do |attr_value|
          div do
-          attr_value.attr.name + ":" + attr_value.val
+          attr_value.attr.name + ":" + attr_value.name
          end
        end
      end

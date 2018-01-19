@@ -5,7 +5,7 @@
 <strong>Описание:</strong><%= @product.description %>
 <p>
   <% @product.attribute_values.each do |attr_value|%>
-      <strong><%= attr_value.attr.name %> :</strong> <%= attr_value.val %><p>
+      <strong><%= attr_value.attr.name %> :</strong> <%= attr_value.name %><p>
   <% end %>
 
 <p>

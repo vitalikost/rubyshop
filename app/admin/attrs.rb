@@ -19,7 +19,7 @@ permit_params :name, attribute_values_attributes: {}
     end
     f.inputs do
       f.has_many :attribute_values, allow_destroy: true, new_record: 'New value' do |a|
-        a.input :val
+        a.input :name
       end
     end
 
@@ -34,7 +34,7 @@ permit_params :name, attribute_values_attributes: {}
         div do
           attr.attribute_values.each do |attr_value|
             div do
-              attr_value.val
+              attr_value.name
             end
           end
         end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116094003) do
+ActiveRecord::Schema.define(version: 20180119140111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,32 +58,13 @@ ActiveRecord::Schema.define(version: 20180116094003) do
     t.string "val"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "attrproducts", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "attrproductvalues", force: :cascade do |t|
-    t.integer "attrproduct_id"
-    t.string "attrvalue"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "attrs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "attrvalueproducts", force: :cascade do |t|
-    t.bigint "Product_id"
-    t.bigint "Attrproductvalue_id"
-    t.index ["Attrproductvalue_id"], name: "index_attrvalueproducts_on_Attrproductvalue_id"
-    t.index ["Product_id"], name: "index_attrvalueproducts_on_Product_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -131,13 +112,6 @@ ActiveRecord::Schema.define(version: 20180116094003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
-  end
-
-  create_table "propertyproducts", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "attrproductvalue_id"
-    t.index ["attrproductvalue_id"], name: "index_propertyproducts_on_attrproductvalue_id"
-    t.index ["product_id"], name: "index_propertyproducts_on_product_id"
   end
 
 end

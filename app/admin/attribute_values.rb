@@ -2,7 +2,7 @@ ActiveAdmin.register AttributeValue do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :val, :attr_id
+permit_params :attr_id, :name
 #
 # or
 #
