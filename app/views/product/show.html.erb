@@ -2,6 +2,10 @@
     <%= @product.name %> - <%= @product.description %>
 <% end %>
 
+<% content_for :keywords do %>
+    <%= @product.name %>
+<% end %>
+
 <strong>Название:</strong><%= @product.name %>
 <p><p>
 <strong>Цена: </strong><%= @product.price %>
