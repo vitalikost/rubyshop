@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rubyshop</title>
+    <title>Интернет магазин игрушок</title>
+    <% if (yield :description).present?  %>
+        <meta name="description" content='<%= yield :description %>'/>
+    <% else %>
+        <meta name="description" content="Итнернет магазин игрушок, и не только" />
+    <% end %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
