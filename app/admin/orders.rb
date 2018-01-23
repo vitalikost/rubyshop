@@ -2,7 +2,7 @@ ActiveAdmin.register Order do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :name, :phone
+ permit_params :name, :phone, :status
 #
 # or
 #
@@ -19,6 +19,7 @@ ActiveAdmin.register Order do
       row :phone
       row :email
       row :comment
+      row :status
 
       row :item do
         table do

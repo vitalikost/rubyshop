@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  enum status: [:new_order, :work_order, :done_order]
   has_many :item_orders, dependent: :destroy
   validates :name, presence: true,
             length: { minimum: 5 }
