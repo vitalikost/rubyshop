@@ -11,11 +11,23 @@
   <div class="col-md-4">
     <h2>Категории:</h2>
     <ul class="list-group">
-      <li class="list-group-item"><%= link_to "Все товары", product_index_path() %></a></li>
+      <li class="list-group-item"><%= link_to "Все товары"+'('+Product.count.to_s+')', product_index_path() %></a></li>
       <% @categories.each do |category| %>
-      <li class="list-group-item"><%= link_to category.name, product_index_path(category_id:category) %></a></li>
+      <li class="list-group-item"><%= link_to category.name+'('+category.products.count.to_s+')', product_index_path(category_id:category) %></a></li>
       <% end %>
     </ul>
+
+    <div class="search-box">
+      <div id="sb-search" class="sb-search">
+        <div>
+          <%= form_tag(product_index_path, method: :get, enforce_utf8: false) do -%>
+            <%= search_field_tag :search, params[:search], placeholder: "Введите название товара...", required: "", class: "sb-search-input" %>
+            <span class="sb-icon-search"></span><%= submit_tag "Найти", name: nil, class: "sb-search-submit" %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+
 
   </div>
   <div class="col-md-8">
