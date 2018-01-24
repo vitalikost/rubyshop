@@ -8,7 +8,7 @@ class ProductController < ApplicationController
     end
 
     if params[:search]
-      @products=Product.where('name LIKE ?', "%#{params[:search]}%")
+      @products=Product.where('name ILIKE ? or description ILIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
     end
 
     @categories = Category.all.order(:position)
