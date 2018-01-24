@@ -1,24 +1,54 @@
-<h1>Продукция:</h1>
 
-<table>
-  <tr>
-    <th width="70"></th>
-    <th width="50"></th>
-    <th width="50"></th>
-    <th width="100"></th>
-  </tr>
+<div class="row">
+  <div class="col-md-12">
+    <header>
+      <h1 class="text-center">Продукция:</h1>
+    </header>
+  </div>
+</div>
 
-  <% @products.each do |product| %>
-      <tr>
-        <td width="70"><%= image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png')) %></td>
-        <td><%= product.name %></td>
-        <td>Цена: <%= product.price %></td>
-        <td><%= link_to 'Посмотреть', product_path(product) %></td>
-        <td><%= link_to 'Купить', cart_add_path(id: product.id) %></td>
-      </tr>
-  <% end %>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Категории:</h2>
+    <ul class="list-group">
+      <li class="list-group-item"><%= link_to "Все товары", product_index_path() %></a></li>
+      <% @categories.each do |category| %>
+      <li class="list-group-item"><%= link_to category.name, product_index_path(category_id:category) %></a></li>
+      <% end %>
+    </ul>
 
-</table>
+  </div>
+  <div class="col-md-8">
+    <section class="row">
+      <table>
+        <tr>
+          <th width="70"></th>
+          <th width="150"></th>
+          <th width="150"></th>
+          <th width="100"></th>
+        </tr>
+
+        <% @products.each do |product| %>
+            <tr>
+              <td width="70"><%= image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png')) %></td>
+              <td><%= product.name %></td>
+              <td>Цена: <%= product.price %></td>
+              <td><%= link_to 'Посмотреть', product_path(product) %></td>
+              <td><%= link_to 'Купить', cart_add_path(id: product.id) %></td>
+            </tr>
+        <% end %>
+
+      </table>
+    </section>
+
+
+  </div>
+</div>
+
+
+
+
+
 
 <% if init_cart %>
     <hr>

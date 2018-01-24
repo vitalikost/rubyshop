@@ -1,6 +1,14 @@
 class ProductController < ApplicationController
   def index
-    @products = Product.all;
+    @category_filter = params[:category_id]
+    if @category_filter
+      @products = Product.all.where(category_id: @category_filter)
+    else
+      @products = Product.all
+    end
+
+
+    @categories = Category.all.order(:position)
   end
 
   def show
