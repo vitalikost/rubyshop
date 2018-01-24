@@ -20,14 +20,14 @@
   </div>
   <div class="col-md-8">
     <section class="row">
-      <table>
-        <tr>
+      <table class="table">
+    <!--    <tr>
           <th width="70"></th>
           <th width="150"></th>
           <th width="150"></th>
           <th width="100"></th>
         </tr>
-
+    -->
         <% @products.each do |product| %>
             <tr>
               <td width="70"><%= image_tag(product.images[0] ? product.images[0].url(:thumb) : image_url('no-image.png')) %></td>

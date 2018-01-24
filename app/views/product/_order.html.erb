@@ -1,12 +1,13 @@
 <% if init_cart.line_items.length > 0 %>
 
     <%= init_cart.id %>
-    <table>
+    <table class="table table-sm">
       <tr>
-        <th width="70">Товар</th>
-        <th width="50">Кво</th>
-        <th width="50">Цена</th>
-        <th width="100">Сумма</th>
+        <th scope="col">Товар</th>
+        <th scope="col">Кво</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Сумма</th>
+        <th scope="col">Действия</th>
       </tr>
       <% @all_summ = 0 %>
       <% init_cart.line_items.each do |product| %>
